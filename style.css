@@ -1,0 +1,41 @@
+body
+{
+    align-content: center;
+    margin-top: 10px;
+    width: auto;
+}
+
+div
+{
+    margin: auto;
+}
+
+tr
+{
+    height: 25px;
+}
+
+label
+{
+    width: 90px !important;
+    margin: 5px;
+    margin-left: 0px !important;
+}
+
+input
+{
+    margin: 5px;
+}
+
+hr
+{
+    margin: 5px;
+    margin-left: 0px !important;
+    color: red;
+}
+
+footer
+{
+    text-align: center;
+    align-content: center;
+}

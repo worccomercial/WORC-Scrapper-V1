@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <!-- Titulo e Tags -->
+        <title>WORC Scraper V1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.85">
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"/>
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <!-- Icone Pagina -->
+        <link rel="shortcut icon" href="Worc-símbolo-oficial.png">
+    </head>
+    <body class="container">
+        <div id="formulario" class="container">
+            <form method="post" id="contactForm" name="contactForm">
+                <fieldset>
+                    <legend><b>WORC Scrapper V1</b></legend>
+                    <p>Insira o CNPJ do cliente para poder obter os dados e salva-los em uma planilha</p>
+                    <hr style="margin-bottom: 20px;">
+                    <input id="btnCnpj" type="button" class="btn btn-dark" onclick="validarCnpj(cnpj.value)" value="Consultar Cnpj" />
+                    <input id="" type="submit" class="btn btn-success" onclick="" value="Salvar" />
+                    <hr style="margin-top: 20px; margin-bottom: 20px;">
+
+                    <div style="display: none;">
+                    <label for="data">Data</label>
+                    <input id="date" name="prop_date" size="60"><br>
+                    </div>
+
+                    <label for="cnpj">Cnpj</label>
+                    <input id="cnpj" name="cnpj" type="text" maxlength="14" size="30" data-mask="00.000.000/0000-00"/><br>
+                    <label for="tipo">Tipo</label>
+                    <input id="tipo" name="tipo" type="text" maxlength="10" size="30"/><br>
+                    <label for="porte">Porte</label>
+                    <input id="porte" name="porte" type="text" maxlength="30" size="30" /><br>
+                    <label for="nome">Nome</label>
+                    <input id="nome" name="nome" type="text" maxlength="60" size="60"  /><br/>
+                    <label for="fantasia">Fantasia</label>
+                    <input id="fantasia" name="fantasia" type="text" maxlength="60" size="60"  /><br/>
+                    <label for="abertura">Abertura</label>
+                    <input id="abertura" name="abertura" type="text" size="10"  /><br/>
+                    <label for="cep">Cep</label>
+                    <input id="cep" name="cep" type="text" maxlength="8" size="8" data-mask="00.000-000" /><br>
+                    <label for="logradouro">Logradouro</label>
+                    <input id="logradouro" name="logradouro" type="text" maxlength="60" size="60"  /><br/>
+                    <label for="numero">Nº</label>
+                    <input id="numero" name="numero" type="text" maxlength="10" size="10"  /><br/>
+                    <label for="complemento">Complemento</label>
+                    <input id="complemento" name="complemento" type="text" maxlength="60" size="60"  /><br/>
+                    <label for="bairro">Bairro</label>
+                    <input id="bairro" name="bairro" type="text" maxlength="40" size="40"  /><br/>
+                    <label for="localidade">Município</label>
+                    <input id="localidade" name="localidade" type="text" maxlength="40" size="40"  /><br/>
+                    <label for="uf">UF</label>
+                    <input id="uf" name="uf" type="text" maxlength="2" size="2"  /><br/>
+                    <label for="ibge">Cód. Ibge</label>
+                    <input id="ibge" name="ibge" type="text" maxlength="7" size="7"  /><br/>
+                    <label for="ddd">DDD</label>
+                    <input id="ddd" name="ddd" type="text" maxlength="2" size="2"  /><br/>
+                    <label for="telefone0">Telefone</label>
+                    <input id="telefone0" name="telefone0" type="text" maxlength="10" size="9" placeholder="123456789" onblur="validarTelefone(this.value)" /><br/>
+                    <label for="telefone1">Celular</label>
+                    <input id="telefone1" name="telefone1" type="text" maxlength="10" size="9" placeholder="123456789" onblur="validarTelefone(this.value)" /><br/>
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" type="email" maxlength="60" size="60" placeholder="email@teste.com.br" /><br/>
+                    <label for="contato">Contato</label>
+                    <input id="contato" name="contato" type="text" maxlength="30" size="30" /><br/>
+                </fieldset>
+            </form>
+        </div>
+        <footer>
+            <div id="mensagem" class="container">
+                <hr style="margin-top: 20px; margin-bottom: 20px">
+                <span id="info" class="text-secondary">2023 (C) WORC > Regis Fernandes</span>
+            </div>
+        </footer>
+        <!-- JS -->
+
+        <script type="text/javascript">
+  document.getElementById('date').value = Date();
+</script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzCfcU_7zHCkO1H-kpaskTiX-BMk501nMy755MzErvKScuyvmX7fcoRcpKQrQQy23Hn/exec'
+  const form = document.forms['contactForm']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+        <!-- <script type="text/javascript" src="script.js"></script> -->
+        <script type="text/javascript" src="apiviacep.js"></script>
+        <script type="text/javascript" src="apireceitaws.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    </body>
+</html>
